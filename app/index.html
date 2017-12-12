@@ -28,7 +28,7 @@
           <img src="img/logo.png">
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Associados">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="index.html">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Associados</span>
           </a>
@@ -65,18 +65,20 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Associados</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>Nome</th>
+                  <th>Nome de Guerra</th>
+                  <th>CPF</th>
+                  <th>Posto</th>
+                  <th>Turma</th>
+                  <th>Orgão</th>
+                  <th>Data de Nascimento</th>
+                  <th>E-mail</th>
                 </tr>
               </thead>
               <tfoot>
@@ -585,7 +587,8 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="./vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -598,6 +601,7 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+    
   </div>
 </body>
 
