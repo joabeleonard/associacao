@@ -65,46 +65,62 @@
   
       
       <!-- Example DataTables Card-->
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Associados</div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <p><a  href="adicionarAssociado.html">Adicionar Associado</a></p>
-
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                
-                  <th>Nome</th>
-                  <th>Nome de Guerra</th>
-                  <th>CPF</th>
-                  <th>Posto</th>
-                  <th>Turma</th>
-                  <th>Orgão</th>
-                  <th>Data de Nascimento</th>
-                  <th>E-mail</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </thead>
-            
-              <tbody>
-                 <th>Nome</th>
-                  <th>Nome de Guerra</th>
-                  <th>CPF</th>
-                  <th>Posto</th>
-                  <th>Turma</th>
-                  <th>Orgão</th>
-                  <th>Data de Nascimento</th>
-                  <th>E-mail</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-              </tbody>
-            </table>
+      <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Cadastrar Associado</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <label for="exampleInputName">Nome</label>
+                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Nome Associado">
+              </div>
+              <div class="col-md-6">
+                <label for="exampleInputLastName">Nome de Guerra</label>
+                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Nome de Guerra">
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <label for="exampleInputCPF">CPF</label>
+                <input class="form-control" id="exampleInputCPF" type="text" placeholder="CPF">
+              </div>
+              <div class="col-md-6">
+                <label for="exampleConfirmPosto">Posto</label>
+                <input class="form-control" id="exampleConfirmPosto" type="text" placeholder="Posto">
+              </div>
+            </div>
+          </div>
+           <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-4">
+                <label for="exampleInputOrgao">Orgão</label>
+                <input class="form-control" id="exampleInputOrgao" type="text" placeholder="Orgão">
+              </div>
+              <div class="col-md-4">
+                <label for="exampleInputTurma">Turma</label>
+                <input class="form-control" id="exampleInputTurma" type="text" placeholder="Turma">
+              </div>
+              <div class="col-md-4">
+                <label for="exampleInputDataNascimento">Data de Nascimento</label>
+                <input class="form-control" id="exampleInputDataNascimento" type="date" placeholder="Data de Nascimento">
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary btn-block" href="login.html">Salvar</a>
+          <a class="btn btn-primary btn-block" href="index.html">Cancel</a>
+        </form>
+        
       </div>
     </div>
+  </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">

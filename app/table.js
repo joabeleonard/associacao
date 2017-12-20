@@ -84,7 +84,7 @@ window.$(document).ready(function() {
     window.$('#new').click( function (e) {
     e.preventDefault();
  
-    var aiNew = oTable.fnAddData( [ '', '', '', '', '',
+    var aiNew = oTable.add( [ '', '', '', '', '','','','',
         '[Edit]()', '[Delete]()' ] );
     var nRow = oTable.fnGetNodes( aiNew[0] );
     editRow( oTable, nRow );
@@ -94,7 +94,7 @@ window.$(document).ready(function() {
     window.$('#dataTable').on('click', 'a.delete',function (e) {
         e.preventDefault();
     
-        var nRow = $(this).parents('tr')[0];
+        var nRow = window.$(this).parents('tr')[0];
         oTable.fnDeleteRow( nRow );
     } );
 } );
