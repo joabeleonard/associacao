@@ -4,7 +4,7 @@ const data = require('./data');
 app.on('ready', () => {
     console.log('Aplicacão iniciada');
     let mainWindow = new BrowserWindow({
-        width: 1024,
+        width: 1700,
         height: 768,
     });
 
