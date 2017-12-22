@@ -24,7 +24,6 @@ window.$(document).ready(function() {
  
     window.$('#dataTable').on('click', 'a.edit',function (e) {
         e.preventDefault();
-        alert('sd');
         /* Get the row as a parent of the link that was clicked on */
         var nRow = window.$(this).parents('tr')[0];
  
