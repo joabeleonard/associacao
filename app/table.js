@@ -1,19 +1,20 @@
 window.$(document).ready(function() {
+const data = require('../database');
 
    var oTable = window.$('#dataTable').DataTable( {
         ajax: {
-            url: '../data/associados.json',
+            url: data.findAll(),
             dataSrc: 'associado'
         },
         columns: [ 
-            { data: 'NOME' },
-            { data: 'NOME DE GUERRA' },
+            { data: 'nome' },
+            { data: 'nomeDeGuerra' },
             { data: 'CPF' } ,
-            { data: 'TURMA' } ,
-            { data: 'POSTO' } ,
-            { data: 'INSTITUIÇÃO' },
-            { data: 'DATA NASC.' },
-            { data: 'E-MAIL' },
+            { data: 'turma' } ,
+            { data: 'posto' } ,
+            { data: 'nomeOrgao' },
+            { data: 'dataNascimento' },
+            { data: 'dataNascimento' },
             { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Edit</a>'; } },
             { "data": "idRemove", render: function (dataField) { return '<a class="remove" href="">Remove</a>'; } }
        ]

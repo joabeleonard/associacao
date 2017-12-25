@@ -1,24 +1,10 @@
-let botaoSalvar = document.querySelector('#btnSalvarAssosiado');
+const { ipcRenderer } = require('electron');
 
-let inputName = document.querySelector('#exampleInputName');
-let inputName = document.querySelector('#exampleInputName');
-let inputName = document.querySelector('#exampleInputName');
-let inputName = document.querySelector('#exampleInputName');
-let inputName = document.querySelector('#exampleInputName');
-let inputName = document.querySelector('#exampleInputName');
-let inputName = document.querySelector('#exampleInputName');
-let inputName = document.querySelector('#exampleInputName');
+let linkAdicionar = document.querySelector('#linkAdicionar');
 
 
 
-botaoSalvar.addEventListener('click', function () {
-    let nome = inputName.textContent;
-    let nome = inputName.textContent;
-    let nome = inputName.textContent;
-    let nome = inputName.textContent;
-    let nome = inputName.textContent;
-    let nome = inputName.textContent;
-    let nome = inputName.textContent;
-    let nome = inputName.textContent;
-
+linkAdicionar.addEventListener('click' , function(){
+    console.log("Ok");
+    ipcRenderer.send('abrir-tela-adicionar');
 });
