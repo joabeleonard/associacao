@@ -3,8 +3,7 @@ const data = require('../database');
 
    var oTable = window.$('#dataTable').DataTable( {
         ajax: {
-            url: data.findAll(),
-            dataSrc: 'associado'
+            url: JSON.stringify(data.findAll())
         },
         columns: [ 
             { data: 'nome' },

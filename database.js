@@ -13,14 +13,15 @@ module.exports = {
     },
 
     findAll(){
-        
+        var associados = [];
 
+        associadosDb.find({}, function(err, docs) {  
+            console.log(JSON.stringify(docs), err);
+              associados = docs;
+        });
 
-        return JSON.stringify( associadosDb.find({}, function(err, docs) {  
-                docs.forEach(function(d) {
-               console.log('Found user:', d);
-             });
-        })) ;
+        return associados;
+
     },
   
     salvaDados(curso, tempoEstudado){
