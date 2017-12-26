@@ -3,24 +3,36 @@ var associadosDb = new nedb({filename: __dirname + '/tempDB/associados.db', auto
 const jsonfile = require('jsonfile-promised');
 
 
+
+
+
+
 module.exports = {
 
     salvaAssociado(associado){
-    console.log(associado);
-    associadosDb.insert(associado, function(err, docs) {  
-        console.log('Uh oh...', err);
-    });
+          console.log(associado);
+         associadosDb.insert(associado, function(err, docs) {  
+           console.log('Uh oh...', err);
+     });
     },
 
+    
     findAll(){
-        var associados = [];
+      var rest = [];
 
-        associadosDb.find({}, function(err, docs) {  
-            console.log(JSON.stringify(docs), err);
-              associados = docs;
-        });
+        function findAllCallback(callback){
+                associadosDb.find({}, function(err, docs) {  
+                    console.log(JSON.stringify(docs), err);
+                    rest.push(docs);
+                    callback();
+                });    
 
-        return associados;
+            }
+
+        findAllCallback( function(){
+            console.log(rest);
+            return JSON.stringify(rest);
+        });    
 
     },
   

@@ -1,9 +1,17 @@
 window.$(document).ready(function() {
 const data = require('../database');
 
+let dados;
+data.findAll().then((associdos) => {
+            dados = associdos;
+        }).catch((err) => {
+            console.log(err);
+            
+        })
+
    var oTable = window.$('#dataTable').DataTable( {
         ajax: {
-            url: JSON.stringify(data.findAll())
+            url: dados
         },
         columns: [ 
             { data: 'nome' },
