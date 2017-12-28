@@ -1,31 +1,36 @@
+
 window.$(document).ready(function() {
 const data = require('../database');
 
-let dados;
-data.findAll().then((associdos) => {
-            dados = associdos;
-        }).catch((err) => {
-            console.log(err);
-            
-        })
 
-   var oTable = window.$('#dataTable').DataTable( {
-        ajax: {
-            url: dados
-        },
+let rest = {};
+ function  handleResult(docs){
+            rest = jQuery.parseJSON(JSON.stringify(docs));
+  
+           
+             var oTable = window.$('#dataTable').DataTable( {
+                 
+        data :  rest, 
+     
+
         columns: [ 
-            { data: 'nome' },
+            { data: "nome" },
             { data: 'nomeDeGuerra' },
             { data: 'CPF' } ,
             { data: 'turma' } ,
             { data: 'posto' } ,
             { data: 'nomeOrgao' },
             { data: 'dataNascimento' },
-            { data: 'dataNascimento' },
+            { data: 'email' },
             { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Edit</a>'; } },
             { "data": "idRemove", render: function (dataField) { return '<a class="remove" href="">Remove</a>'; } }
        ]
     } );
+        }    
+        data.findAllCallback(handleResult);
+
+
+  
 
  
   var nEditing = null;

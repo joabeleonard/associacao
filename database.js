@@ -6,6 +6,14 @@ const jsonfile = require('jsonfile-promised');
 
 
 
+ function findAllCallback(callback){
+                associadosDb.find({}, function(err, docs) {  
+                    console.log(JSON.stringify(docs), err);
+                   
+                    callback(docs);
+                });    
+
+            }
 
 module.exports = {
 
@@ -17,24 +25,14 @@ module.exports = {
     },
 
     
-    findAll(){
-      var rest = [];
-
-        function findAllCallback(callback){
+   findAllCallback(callback){
                 associadosDb.find({}, function(err, docs) {  
                     console.log(JSON.stringify(docs), err);
-                    rest.push(docs);
-                    callback();
+                   
+                    callback(docs);
                 });    
 
-            }
-
-        findAllCallback( function(){
-            console.log(rest);
-            return JSON.stringify(rest);
-        });    
-
-    },
+            },
   
     salvaDados(curso, tempoEstudado){
         let arquivoDoCurso = __dirname + '/data/'+ curso + '.json';
