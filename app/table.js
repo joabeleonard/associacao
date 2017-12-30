@@ -23,19 +23,16 @@ let rest = {};
             { data: 'dataNascimento' },
             { data: 'email' },
             { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Edit</a>'; } },
-            { "data": "idRemove", render: function (dataField) { return '<a class="remove" href="">Remove</a>'; } }
+            { "data": "idRemove", render: function (dataField) { return '<a class="remove" href="">Remove</a>'; }},
+            { data: '_id' ,hidden: true}
        ]
     } );
-        }    
-        data.findAllCallback(handleResult);
 
 
-  
-
- 
-  var nEditing = null;
+    var nEditing = null;
  
     window.$('#dataTable').on('click', 'a.edit',function (e) {
+        alert("dsfd");
         e.preventDefault();
         /* Get the row as a parent of the link that was clicked on */
         var nRow = window.$(this).parents('tr')[0];
@@ -59,14 +56,18 @@ let rest = {};
     } );
    function editRow ( oTable, nRow )
     {
-        var aData = oTable.fnGetData(nRow);
+        var aData = oTable.row(nRow).data();
         var jqTds = window.$('>td', nRow);
         jqTds[0].innerHTML = '<input type="text" value="'+aData[0]+'">';
         jqTds[1].innerHTML = '<input type="text" value="'+aData[1]+'">';
         jqTds[2].innerHTML = '<input type="text" value="'+aData[2]+'">';
         jqTds[3].innerHTML = '<input type="text" value="'+aData[3]+'">';
         jqTds[4].innerHTML = '<input type="text" value="'+aData[4]+'">';
-        jqTds[5].innerHTML = '[Save]()';
+        jqTds[5].innerHTML = '<input type="text" value="'+aData[5]+'">';
+        jqTds[6].innerHTML = '<input type="text" value="'+aData[6]+'">';
+        jqTds[7].innerHTML = '<input type="text" value="'+aData[7]+'">';
+        jqTds[8].innerHTML = '[Save]()';
+        
     }
 
     function restoreRow ( oTable, nRow )
@@ -103,11 +104,20 @@ let rest = {};
     nEditing = nRow;
     } );
 
-    window.$('#dataTable').on('click', 'a.delete',function (e) {
+    window.$('#dataTable').on('click', 'a.remove',function (e) {
         e.preventDefault();
     
         var nRow = window.$(this).parents('tr')[0];
-        oTable.fnDeleteRow( nRow );
+        console.log(nRow);
+        oTable.fnDeleteRow( nRow , null, true);
     } );
+        }    
+        data.findAllCallback(handleResult);
+
+
+  
+
+ 
+  
 } );
 
