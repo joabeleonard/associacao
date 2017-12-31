@@ -36,3 +36,16 @@ botaoSalvar.addEventListener('click', function () {
     addRow(associado);
 
 });
+
+function preencherObjeto(associado){
+    inputName.value = associado.nome;
+    inputNomeDeGuerra.value = associado.nomeDeGuerra;
+    inputEmail.value = associado.email;
+    inputCPF.value = associado.CPF;
+    inputPosto.value = associado.posto;
+    inputOrgao.value= associado.nomeOrgao;
+    inputTurma.value= associado.turma;
+    inputDataNascimento.value= associado.dataNascimento;
+    window.$("#myModal").modal("show");
+
+}

@@ -40,27 +40,12 @@ let rest = {};
     var nEditing = null;
  
     window.$('#dataTable').on('click', 'a.edit',function (e) {
-        alert("dsfd");
         e.preventDefault();
         /* Get the row as a parent of the link that was clicked on */
         var nRow = window.$(this).parents('tr')[0];
  
-        if ( nEditing !== null && nEditing != nRow ) {
-            /* A different row is being edited - the edit should be cancelled and this row edited */
-            restoreRow( oTable, nEditing );
-            editRow( oTable, nRow );
-            nEditing = nRow;
-        }
-        else if ( nEditing == nRow && this.innerHTML == "Save" ) {
-            /* This row is being edited and should be saved */
-            saveRow( oTable, nEditing );
-            nEditing = null;
-        }
-        else {
-            /* No row currently being edited */
-            editRow( oTable, nRow );
-            nEditing = nRow;
-        }
+        var aData = oTable.row(nRow).data();
+        preencherObjeto(aData);
     } );
    function editRow ( oTable, nRow )
     {
