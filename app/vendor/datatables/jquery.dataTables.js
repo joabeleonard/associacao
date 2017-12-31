@@ -11415,7 +11415,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Mostrando _START_ à _END_ de _TOTAL_ ",
+			"sInfo": "Mostrando _START_ a _END_ de _TOTAL_ ",
 	
 	
 			/**

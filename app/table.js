@@ -1,5 +1,14 @@
 
 window.$(document).ready(function() {
+    initialise();
+} );
+
+function addRow(associado){
+    oTable.row.add(associado).draw();
+}
+
+var oTable;
+function initialise(){
 const data = require('../database');
 
 
@@ -8,7 +17,7 @@ let rest = {};
             rest = jQuery.parseJSON(JSON.stringify(docs));
   
            
-             var oTable = window.$('#dataTable').DataTable( {
+             oTable = window.$('#dataTable').DataTable( {
                  
         data :  rest, 
      
@@ -22,9 +31,8 @@ let rest = {};
             { data: 'nomeOrgao' },
             { data: 'dataNascimento' },
             { data: 'email' },
-            { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Edit</a>'; } },
-            { "data": "idRemove", render: function (dataField) { return '<a class="remove" href="">Remove</a>'; }},
-            { data: '_id' ,hidden: true}
+            { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Editar</a>'; } },
+            { "data": "idRemove", render: function (dataField) { return '<a class="remove" href="">Remove</a>'; }}
        ]
     } );
 
@@ -106,18 +114,16 @@ let rest = {};
 
     window.$('#dataTable').on('click', 'a.remove',function (e) {
         e.preventDefault();
-    
         var nRow = window.$(this).parents('tr')[0];
-        console.log(nRow);
-        oTable.fnDeleteRow( nRow , null, true);
+        var aData = oTable.row(nRow).data();
+
+        data.removerAssociado(aData);
+         oTable
+        .row( nRow )
+        .remove()
+        .draw();
+
     } );
         }    
         data.findAllCallback(handleResult);
-
-
-  
-
- 
-  
-} );
-
+};

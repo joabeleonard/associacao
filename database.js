@@ -24,6 +24,15 @@ module.exports = {
      });
     },
 
+     removerAssociado(associado){
+          console.log(associado);
+      associadosDb.remove({ _id: associado._id }, {}, function (err) {
+         if(err)return console.log(err);
+
+         console.log("Usuário removido");
+        });
+    },
+
     
    findAllCallback(callback){
                 associadosDb.find({}, function(err, docs) {  
