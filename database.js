@@ -17,6 +17,12 @@ const jsonfile = require('jsonfile-promised');
 
 module.exports = {
 
+     editarAssociado(associado){
+          console.log(associado);
+         associadosDb.update({_id:associado._id}, associado, {}, function(err, docs) {  
+           console.log('Update...', err);
+     });
+    },
     salvaAssociado(associado){
           console.log(associado);
          associadosDb.insert(associado, function(err, docs) {  

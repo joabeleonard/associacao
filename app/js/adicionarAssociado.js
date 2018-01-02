@@ -1,3 +1,4 @@
+
 const { ipcRenderer } = require('electron');
 const data = require('../database');
 
@@ -11,6 +12,7 @@ let inputPosto = document.querySelector('#inputPosto');
 let inputOrgao = document.querySelector('#exampleInputOrgao');
 let inputTurma = document.querySelector('#exampleInputTurma');
 let inputDataNascimento = document.querySelector('#exampleInputDataNascimento');
+let inputHiddenId = document.querySelector('#hiddenId');
 
 botaoSalvar.addEventListener('click', function () {
     let nome = inputName.value;
@@ -21,6 +23,7 @@ botaoSalvar.addEventListener('click', function () {
     let nomeOrgao = inputOrgao.value;
     let turma = inputTurma.value;
     let dataNascimento = inputDataNascimento.value;
+    let hiddenId = inputHiddenId.value;
 
     let associado = new Object();
     associado.nome = nome;
@@ -31,9 +34,17 @@ botaoSalvar.addEventListener('click', function () {
     associado.nomeOrgao = nomeOrgao;
     associado.turma = turma;
     associado.dataNascimento = dataNascimento;
-    data.salvaAssociado(associado);
+    associado._id = hiddenId;
+
+    if(hiddenId != null && hiddenId != undefined && hiddenId != ""){
+         data.editarAssociado(associado);
+    }else{
+         data.salvaAssociado(associado);
+         addRow(associado);
+    }
+   
     window.$("#myModal").modal("hide");
-    addRow(associado);
+    
 
 });
 
@@ -46,6 +57,8 @@ function preencherObjeto(associado){
     inputOrgao.value= associado.nomeOrgao;
     inputTurma.value= associado.turma;
     inputDataNascimento.value= associado.dataNascimento;
+    hiddenId.value = associado._id;
     window.$("#myModal").modal("show");
 
 }
+

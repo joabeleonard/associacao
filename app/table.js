@@ -7,6 +7,7 @@ function addRow(associado){
     oTable.row.add(associado).draw();
 }
 
+
 var oTable;
 function initialise(){
 const data = require('../database');
@@ -46,6 +47,8 @@ let rest = {};
  
         var aData = oTable.row(nRow).data();
         preencherObjeto(aData);
+
+        oTable.row(nRow).editRow();
     } );
    function editRow ( oTable, nRow )
     {
