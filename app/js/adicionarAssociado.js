@@ -14,6 +14,8 @@ let inputTurma = document.querySelector('#exampleInputTurma');
 let inputDataNascimento = document.querySelector('#exampleInputDataNascimento');
 let inputHiddenId = document.querySelector('#hiddenId');
 
+let row;
+
 botaoSalvar.addEventListener('click', function () {
     let nome = inputName.value;
     let nomeDeGuerra = inputNomeDeGuerra.value;
@@ -37,7 +39,11 @@ botaoSalvar.addEventListener('click', function () {
     associado._id = hiddenId;
 
     if(hiddenId != null && hiddenId != undefined && hiddenId != ""){
-         data.editarAssociado(associado);
+         data.editarAssociado(associado, atualizarRow);
+
+          function atualizarRow(resposta) {
+            editRow(row, resposta);
+        }
     }else{
          data.salvaAssociado(associado);
          addRow(associado);
@@ -48,7 +54,9 @@ botaoSalvar.addEventListener('click', function () {
 
 });
 
-function preencherObjeto(associado){
+
+function preencherObjeto(associado, updateRow){
+    row = updateRow;
     inputName.value = associado.nome;
     inputNomeDeGuerra.value = associado.nomeDeGuerra;
     inputEmail.value = associado.email;

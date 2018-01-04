@@ -1,4 +1,5 @@
 
+var oTable;
 window.$(document).ready(function() {
     initialise();
 } );
@@ -7,8 +8,15 @@ function addRow(associado){
     oTable.row.add(associado).draw();
 }
 
+function editRow(row, associado){
+    console.log(associado);
+      oTable
+        .row(row)
+        .remove()
+        .draw();
+oTable.row.add(jQuery.parseJSON(associado)).draw();
+}
 
-var oTable;
 function initialise(){
 const data = require('../database');
 
@@ -44,11 +52,10 @@ let rest = {};
         e.preventDefault();
         /* Get the row as a parent of the link that was clicked on */
         var nRow = window.$(this).parents('tr')[0];
- 
-        var aData = oTable.row(nRow).data();
-        preencherObjeto(aData);
 
-        oTable.row(nRow).editRow();
+        var aData = oTable.row(nRow).data();
+        preencherObjeto(aData, nRow);
+
     } );
    function editRow ( oTable, nRow )
     {

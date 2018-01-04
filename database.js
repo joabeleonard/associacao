@@ -15,12 +15,27 @@ const jsonfile = require('jsonfile-promised');
 
             }
 
+
+ function findByIdCallback(id, callback){
+                associadosDb.findOne({ _id: id }, function(err, docs) {  
+                    console.log(JSON.stringify(docs), err);
+                   
+                    callback(docs);
+                });    
+
+            }
 module.exports = {
 
-     editarAssociado(associado){
-          console.log(associado);
-         associadosDb.update({_id:associado._id}, associado, {}, function(err, docs) {  
-           console.log('Update...', err);
+     editarAssociado(associado, callback){
+         associadosDb.update({_id:associado._id}, associado, {}, function(err, numReplaced) {  
+
+            findByIdCallback(associado._id,callbackFindOne);
+
+            function callbackFindOne(resposta) {
+                  callback(JSON.stringify(resposta));
+             }
+           console.log("Update", err);
+           
      });
     },
     salvaAssociado(associado){
