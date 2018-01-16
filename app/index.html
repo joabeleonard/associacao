@@ -17,7 +17,13 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
- 
+ <style>
+.modal.modal-wide .modal-dialog .modal-content{
+  width: 700px;
+}
+
+
+</style>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -72,7 +78,7 @@
           <div class="table-responsive">
             <p>
             <a data-toggle="modal" href="#myModal">Adicionar Associado</a></p>
-
+                
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 
@@ -121,7 +127,7 @@
   
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal modal-wide fade" id="myModal" >
     <div class="modal-dialog">
 
       <!-- Modal content-->
