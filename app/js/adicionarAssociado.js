@@ -36,9 +36,10 @@ botaoSalvar.addEventListener('click', function () {
     associado.nomeOrgao = nomeOrgao;
     associado.turma = turma;
     associado.dataNascimento = dataNascimento;
-    associado._id = hiddenId;
+    
 
     if(hiddenId != null && hiddenId != undefined && hiddenId != ""){
+         associado._id = hiddenId;
          data.editarAssociado(associado, atualizarRow);
 
           function atualizarRow(resposta) {
