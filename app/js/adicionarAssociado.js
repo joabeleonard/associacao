@@ -2,7 +2,9 @@
 const { ipcRenderer } = require('electron');
 const data = require('../database');
 
-let botaoSalvar = document.querySelector('#btnSalvarAssosiado');
+
+
+let botaoSalvar = document.querySelector('#btnSalvarAssosiado').setAttribute('disabled', true);
 
 let inputName = document.querySelector('#exampleInputName');
 let inputNomeDeGuerra = document.querySelector('#inputNomeDeGuerra');
@@ -13,6 +15,27 @@ let inputOrgao = document.querySelector('#exampleInputOrgao');
 let inputTurma = document.querySelector('#exampleInputTurma');
 let inputDataNascimento = document.querySelector('#exampleInputDataNascimento');
 let inputHiddenId = document.querySelector('#hiddenId');
+let inputMatricula = document.querySelector('#exampleInputMatricula');
+let inputAssociado = document.querySelector('#inputAssociado');
+let inputTelefone = document.querySelector('#exampleInputTelefone');
+
+
+inputCPF.addEventListener('keypress',function(){
+
+    let rest = {};
+    function handleResult(docs){
+        rest = jQuery.parseJSON(JSON.stringify(docs));
+    }
+
+    data.pesquisaPorCpf(handleResult, inputCPF.value);
+
+    if(rest === null){
+        botaoSalvar.setAttribute('disabled', false);
+    }else{
+
+    }
+
+    });
 
 let row;
 
@@ -26,6 +49,9 @@ botaoSalvar.addEventListener('click', function () {
     let turma = inputTurma.value;
     let dataNascimento = inputDataNascimento.value;
     let hiddenId = inputHiddenId.value;
+    let matricula = inputMatricula.value;
+    let flagAssociado = inputAssociado.value;
+    let telefone = inputTelefone.value;
 
     let associado = new Object();
     associado.nome = nome;
@@ -36,7 +62,9 @@ botaoSalvar.addEventListener('click', function () {
     associado.nomeOrgao = nomeOrgao;
     associado.turma = turma;
     associado.dataNascimento = dataNascimento;
-    
+    associado.matricula = matricula;
+    associado.flg_associado = flagAssociado;
+    associado.telefone = telefone;
 
     if(hiddenId != null && hiddenId != undefined && hiddenId != ""){
          associado._id = hiddenId;
@@ -46,6 +74,7 @@ botaoSalvar.addEventListener('click', function () {
             editRow(row, resposta);
         }
     }else{
+        associado.dataCriacao = new Date();
          data.salvaAssociado(associado);
          addRow(associado);
     }
@@ -67,6 +96,9 @@ function preencherObjeto(associado, updateRow){
     inputTurma.value= associado.turma;
     inputDataNascimento.value= associado.dataNascimento;
     hiddenId.value = associado._id;
+    inputMatricula.value = associado.matricula;
+    inputAssociado.value = associado.flg_associado;
+    inputTelefone.value = associado.telefone;
     window.$("#myModal").modal("show");
 
 }

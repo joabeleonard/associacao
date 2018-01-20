@@ -35,13 +35,12 @@ let rest = {};
             { data: "nome" },
             { data: 'nomeDeGuerra' },
             { data: 'CPF' } ,
-            { data: 'turma' } ,
             { data: 'posto' } ,
             { data: 'nomeOrgao' },
             { data: 'dataNascimento' },
             { data: 'email' },
             { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Editar</a>'; } },
-            { "data": "idRemove", render: function (dataField) { return '<a class="remove" href="">Remove</a>'; }}
+            { "data": "idDetalhar", render: function (dataField) { return '<a class="detalhar" href="">Detalhar</a>'; } }
        ]
     } );
 
