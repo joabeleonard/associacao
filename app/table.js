@@ -37,8 +37,6 @@ let rest = {};
             { data: 'CPF' } ,
             { data: 'posto' } ,
             { data: 'nomeOrgao' },
-            { data: 'dataNascimento' },
-            { data: 'email' },
             { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Editar</a>'; } },
             { "data": "idDetalhar", render: function (dataField) { return '<a class="detalhar" href="">Detalhar</a>'; } }
        ]
@@ -55,7 +53,23 @@ let rest = {};
         var aData = oTable.row(nRow).data();
         preencherObjeto(aData, nRow);
 
+        window.$("#myModal").modal("show");
+
     } );
+
+    window.$('#dataTable').on('click', 'a.detalhar',function (e) {
+        e.preventDefault();
+        /* Get the row as a parent of the link that was clicked on */
+        var nRow = window.$(this).parents('tr')[0];
+
+        var aData = oTable.row(nRow).data();
+        preencherObjeto(aData, nRow);
+
+        window.$("#myModalDetalhe").modal("show");
+
+
+    } );
+
    function editRow ( oTable, nRow )
     {
         var aData = oTable.row(nRow).data();

@@ -4,7 +4,7 @@ const jsonfile = require('jsonfile-promised');
 
  function findAllCallback(callback){
                 associadosDb.find({}, function(err, docs) {  
-                    console.log(JSON.stringify(docs), err);
+                    //console.log(JSON.stringify(docs), err);
                    
                     callback(docs);
                 });    
@@ -53,7 +53,7 @@ module.exports = {
     
    findAllCallback(callback){
                 associadosDb.find({}, function(err, docs) {  
-                    console.log(JSON.stringify(docs), err);
+                    //console.log(JSON.stringify(docs), err);
                    
                     callback(docs);
                 });    

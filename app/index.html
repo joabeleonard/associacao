@@ -49,7 +49,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="login.html">Gerar Arquivo de Variação</a>
+              <a id="menuGerarArquivoVariacao" href="#">Gerar Arquivo de Variação</a>
             </li>
             <li>
               <a href="register.html">Enviar Arquivo de Retorno</a>
@@ -94,10 +94,8 @@
                   <th>CPF</th>
                   <th>Posto</th>
                   <th>Orgão</th>
-                  <th>Data de Nascimento</th>
-                  <th>E-mail</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
+                  <th>Editar</th>
+                  <th>Detalhar</th>
               </thead>
             
               <tbody>
@@ -106,10 +104,8 @@
                   <th>CPF</th>
                   <th>posto</th>
                   <th>nomeOrgao</th>
-                  <th>dataNascimento</th>
-                  <th>email</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
+                  <th>Editar</th>
+                  <th>Detalhar</th>
               </tbody>
             </table>
           </div>
@@ -228,7 +224,64 @@
     </div>
  
 </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal modal-wide fade" id="myModalDetalhe" >
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <div class="container">
+  <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Informações do associados</div>
+
+      <div class="card-body">
+        <div class="form-row">
+          <div class="col-md-4">
+              <label for="inputNomeDeGuerraDetalhar">Nome de Guerra</label>
+              <input class="form-control" disabled="true" id="inputNomeDeGuerraDetalhar" type="text" aria-describedby="nameHelp" placeholder="Nome de Guerra">
+          </div>
+          <div class="col-md-8">
+              <label for="exampleInputNameDetalhar">Nome</label>
+              <input class="form-control" disabled="true" id="exampleInputNameDetalhar" type="text" aria-describedby="nameHelp" placeholder="Nome Associado">
+         </div>   
+        </div>
+        <div class="form-row">
+          <div class="col-md-8">
+              <label for="inputEmailDetalhar">Email</label>
+              <input class="form-control"  id="inputEmailDetalhar" disabled="true"  type="email" aria-describedby="emailHelp" placeholder="Email">
+
+          </div>
+          <div class="col-md-4">
+              <label for="exampleInputDataNascimentoDetalhar">Data de Nascimento</label>
+              <input class="form-control" disabled="true" id="exampleInputDataNascimentoDetalhar" type="date" placeholder="Data de Nascimento">
+
+          </div>
+        </div>
+
+      
+      </div>
+  </div>
+</div>
+      </div>
+    
+    </div>
+  </div>
+
+</div>
+
+
+
     <script src="js/adicionarAssociado.js"></script>
+    <script src="js/gerarArquivoRetorno.js"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="./vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
