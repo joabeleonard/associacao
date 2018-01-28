@@ -89,6 +89,10 @@ botaoSalvar.addEventListener('click', function () {
          addRow(associado);
     }
    
+    window.$.dreamAlert({
+        'type'      :   'success',
+        'message'   :   'Operação Realizada com Sucesso!'
+    });
     window.$("#myModal").modal("hide");
     
 

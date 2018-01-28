@@ -5,13 +5,19 @@ let menuGerarArquivoVariacao = document.querySelector('#menuGerarArquivoVariacao
 
 menuGerarArquivoVariacao.addEventListener('click', function () {
        
-    fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
-        if (err) throw err;
+    fs.writeFile('arquivoVariacao.txt', 'Arquivo gerado com sucesso!', function (err) {
+        if (err) {
+            window.$.dreamAlert({
+                'type'      :   'error',
+                'message'   :   'Erro, Por favor tente novamente!'
+            });
+            throw err;
+        }
         console.log('Saved!');
 
         window.$.dreamAlert({
             'type'      :   'success',
-            'message'   :   'Operation completed!'
+            'message'   :   'Arquivo gerado com sucesso!'
         });
       });
 });

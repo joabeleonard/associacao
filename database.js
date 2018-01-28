@@ -37,6 +37,13 @@ module.exports = {
     salvaAssociado(associado){
           console.log(associado);
          associadosDb.insert(associado, function(err, docs) {  
+
+           if(err){
+            window.$.dreamAlert({
+                'type'      :   'error',
+                'message'   :   'Erro, Tente Novamente!'
+            });
+           } 
            console.log('Uh oh...', err);
      });
     },
@@ -60,10 +67,14 @@ module.exports = {
 
             },
 
-    findAniversaviantesCallback(callback){
+    findToArquivoRetorno(callback){
 
         var currentDate = new Date();
-        var day = currentDate.getDay();
+        var day = currentDate.getUTCDate();
+
+        if(day > 11){
+
+        }
         var month = currentDate.getMonth()+1;
 
                 associadosDb.find({dataNascimento:day, dataNascimento:month}, function(err, docs) {  
