@@ -16,14 +16,37 @@ function openFile () {
 
         var fileName = fileNames[0];
 
-        fs.readFile(fileName, 'utf-8', function (err, data) {
-             console.log(data);
+            fs.readFile(fileName, 'utf-8', function (err, data) {
+              
+                let ano = data.substr(0,4);
+                let mes = data.substr(4,2);
+                let orgao = data.substr(6,3);
+                let matricula = data.substr(9,8);
+                let justificativa = data.substr(110,2);
+
+
+
+                  console.log("Ano: "+ano +"Mes: " +mes + "Matricula: "+ matricula + "Orgao: " + orgao), "justificativa: " + justificativa;
+                fs.writeFile('arquivosRetorno/arquivoVariacao.txt', data, function (err) {
+               if (err) {
+                  window.$.dreamAlert({
+                      'type'      :   'error',
+                      'message'   :   'Erro, Por favor tente novamente!'
+                  });
+                  throw err;
+                 }
+                 console.log('Saved!');
+
+                  });
+
+
+            window.$.dreamAlert({
+                'type'      :   'success',
+                'message'   :   'Operação Realizada com Sucesso!'
+            });
         });
 
-        window.$.dreamAlert({
-            'type'      :   'success',
-            'message'   :   'Operação Realizada com Sucesso!'
-        });
+       
 
     }); 
 }
