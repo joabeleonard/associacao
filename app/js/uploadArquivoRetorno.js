@@ -1,6 +1,8 @@
 var app = require('electron').remote; 
 var dialog = app.dialog;
 var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
+const data = require('../database');
+
 
 let botaoSalvar = document.querySelector('#btnSalvarArquivo');
 
@@ -24,27 +26,31 @@ function openFile () {
                 let matricula = data.substr(9,8);
                 let justificativa = data.substr(110,2);
 
-
-
-                  console.log("Ano: "+ano +"Mes: " +mes + "Matricula: "+ matricula + "Orgao: " + orgao), "justificativa: " + justificativa;
+                console.log("Ano: "+ano +"Mes: " +mes + "Matricula: "+ matricula + "Orgao: " + orgao), "justificativa: " + justificativa;
                 fs.writeFile('arquivosRetorno/arquivoVariacao.txt', data, function (err) {
-               if (err) {
+                    if (err) {
+                        window.$.dreamAlert({
+                            'type'      :   'error',
+                            'message'   :   'Erro, Por favor tente novamente!'
+                        });
+                        throw err;
+                     }
+                     console.log('Saved!');
+
+                  });
+
+                  let rest = {};
+                  function handleResult(docs){
+                      rest = jQuery.parseJSON(JSON.stringify(docs));
+                   }
+
+                   data.pesquisaPorMAtriculaOrgao(handleResult, matricula, orgao);
+
                   window.$.dreamAlert({
-                      'type'      :   'error',
-                      'message'   :   'Erro, Por favor tente novamente!'
+                      'type'      :   'success',
+                      'message'   :   'Operação Realizada com Sucesso!'
                   });
-                  throw err;
-                 }
-                 console.log('Saved!');
-
-                  });
-
-
-            window.$.dreamAlert({
-                'type'      :   'success',
-                'message'   :   'Operação Realizada com Sucesso!'
             });
-        });
 
        
 

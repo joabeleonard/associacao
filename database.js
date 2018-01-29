@@ -90,5 +90,12 @@ module.exports = {
            
             callback(docs);
         });
+    },
+    pesquisaPorMAtriculaOrgao(callback, matricula, cpf){
+        associadosDb.find({CPF:cpf+""}, function(err, docs) {  
+            console.log(JSON.stringify(docs), err);
+           
+            callback(docs);
+        });
     }
 }
