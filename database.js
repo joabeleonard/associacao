@@ -85,14 +85,16 @@ module.exports = {
             
             },
     pesquisaPorCpf(callback, cpf){
+
         associadosDb.find({CPF:cpf+""}, function(err, docs) {  
             console.log(JSON.stringify(docs), err);
            
             callback(docs);
         });
+     
     },
-    pesquisaPorMAtriculaOrgao(callback, matricula, cpf){
-        associadosDb.find({CPF:cpf+""}, function(err, docs) {  
+    pesquisaPorMatriculaOrgao(callback, matricula, codOrgao){
+         associadosDb.findOne({matricula:matricula+"", codOrgao:Number(codOrgao)}, function(err, docs) {  
             console.log(JSON.stringify(docs), err);
            
             callback(docs);

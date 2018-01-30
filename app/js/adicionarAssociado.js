@@ -75,6 +75,14 @@ botaoSalvar.addEventListener('click', function () {
     associado.flg_associado = flagAssociado;
     associado.telefone = telefone;
 
+    if(associado.nomeOrgao ==='PMCE'){
+        associado.codOrgao = 371;
+    }
+
+    if(associado.nomeOrgao ==='CBMCE'){
+        associado.codOrgao = 381;
+    }
+
     if(hiddenId != null && hiddenId != undefined && hiddenId != ""){
          associado._id = hiddenId;
          associado.dataUltimaEdicao = new Date();
