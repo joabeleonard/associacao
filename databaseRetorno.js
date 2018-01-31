@@ -16,5 +16,13 @@ module.exports = {
            } 
            console.log('Uh oh...', err);
      });
+    },
+    
+     pesquisaPorIdAssociado(callback, id){
+         retornoDb.find({idAssociado:id}, function(err, docs) {  
+            console.log(JSON.stringify(docs), err);
+           
+            callback(docs);
+        });
     }
 }

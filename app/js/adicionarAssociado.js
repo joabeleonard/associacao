@@ -1,6 +1,8 @@
 
 const { ipcRenderer } = require('electron');
 const data = require('../database');
+const dataRetorno = require('../databaseRetorno');
+
 
 
 
@@ -17,16 +19,27 @@ let inputEmailDetalhar = document.querySelector('#inputEmailDetalhar');
 
 let inputCPF = document.querySelector('#exampleInputCPF');
 let inputPosto = document.querySelector('#inputPosto');
+
 let inputOrgao = document.querySelector('#exampleInputOrgao');
+let inputOrgaoDetalhar = document.querySelector('#inputOrgaoDetalhar');
+
 let inputTurma = document.querySelector('#exampleInputTurma');
 let inputDataNascimento = document.querySelector('#exampleInputDataNascimento');
 let inputDataNascimentoDetalhe = document.querySelector('#exampleInputDataNascimentoDetalhar');
 
 
 let inputHiddenId = document.querySelector('#hiddenId');
+
 let inputMatricula = document.querySelector('#exampleInputMatricula');
+let inputmatriculaDetalhar = document.querySelector('#inputmatriculaDetalhar');
+
 let inputAssociado = document.querySelector('#inputAssociado');
+let inputAssociadoDetalhar = document.querySelector('#inputAssociadoDetalhar');
+
+
 let inputTelefone = document.querySelector('#exampleInputTelefone');
+
+let retornos = {};
 
 
 inputCPF.addEventListener('keypress',function(){
@@ -110,21 +123,45 @@ botaoSalvar.addEventListener('click', function () {
 function preencherObjeto(associado, updateRow){
     row = updateRow;
     inputName.value = associado.nome;
-    inputNameDetalhar.value = associado.nome;
     inputNomeDeGuerra.value = associado.nomeDeGuerra;
-    inputNomeDeGuerraDetalhar.value =  associado.nomeDeGuerra;
     inputEmail.value = associado.email;
-    inputEmailDetalhar.value = associado.email;
     inputCPF.value = associado.CPF;
     inputPosto.value = associado.posto;
     inputOrgao.value= associado.nomeOrgao;
+
     inputTurma.value= associado.turma;
     inputDataNascimento.value= associado.dataNascimento;
-    inputDataNascimentoDetalhe.value = associado.dataNascimento;    
     hiddenId.value = associado._id;
     inputMatricula.value = associado.matricula;
+
     inputAssociado.value = associado.flg_associado;
+
     inputTelefone.value = associado.telefone;
+
+}
+
+function preencherObjetoDetalhar(associado, updateRow){
+    row = updateRow;
+    inputNameDetalhar.value = associado.nome;
+    inputNomeDeGuerraDetalhar.value =  associado.nomeDeGuerra;
+    inputEmailDetalhar.value = associado.email;
+    inputOrgaoDetalhar.value= associado.nomeOrgao;
+   
+    inputDataNascimentoDetalhe.value = associado.dataNascimento;    
+ 
+    inputmatriculaDetalhar.value = associado.matricula;
+
+    inputAssociadoDetalhar.value = associado.flg_associado;
+
+
+     function handleResult(docs){
+            
+         retornos = jQuery.parseJSON(JSON.stringify(docs));
+         console.log("Retorno dfs"+retornos[0]._id);
+     }
+
+     dataRetorno.pesquisaPorIdAssociado(handleResult, associado._id);
+
 
 }
 

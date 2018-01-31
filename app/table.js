@@ -63,7 +63,7 @@ let rest = {};
         var nRow = window.$(this).parents('tr')[0];
 
         var aData = oTable.row(nRow).data();
-        preencherObjeto(aData, nRow);
+        preencherObjetoDetalhar(aData, nRow);
 
         window.$("#myModalDetalhe").modal("show");
 
