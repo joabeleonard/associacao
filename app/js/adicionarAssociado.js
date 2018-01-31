@@ -40,6 +40,7 @@ let inputAssociadoDetalhar = document.querySelector('#inputAssociadoDetalhar');
 let inputTelefone = document.querySelector('#exampleInputTelefone');
 
 let retornos = {};
+var tableRetorno;
 
 
 inputCPF.addEventListener('keypress',function(){
@@ -158,6 +159,16 @@ function preencherObjetoDetalhar(associado, updateRow){
             
          retornos = jQuery.parseJSON(JSON.stringify(docs));
          console.log("Retorno dfs"+retornos[0]._id);
+
+         tableRetorno = window.$('#dataTableRetorno').DataTable( {
+                 
+            data :  retornos, 
+            
+            columns: [ 
+                { data: "ano" },
+                { data: 'mes' },
+                { data: 'justificativa' }  ]
+        } );
      }
 
      dataRetorno.pesquisaPorIdAssociado(handleResult, associado._id);
