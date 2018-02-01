@@ -106,6 +106,7 @@ botaoSalvar.addEventListener('click', function () {
             editRow(row, resposta);
         }
     }else{
+        associado.enviarNoProximoArquivoRetorno = true;
         associado.dataCriacao = new Date();
          data.salvaAssociado(associado);
          addRow(associado);

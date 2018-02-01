@@ -71,13 +71,13 @@ module.exports = {
 
         var currentDate = new Date();
         var day = currentDate.getUTCDate();
-
-        if(day > 11){
-
-        }
+        var month = currentDate.getMonth();
+        var year = currentDate.getFullYear(); 
+        let date = year+"-"+month +"-"+ 10;
+       
         var month = currentDate.getMonth()+1;
 
-                associadosDb.find({dataNascimento:day, dataNascimento:month}, function(err, docs) {  
+                associadosDb.find({$or:[{enviarNoProximoArquivoRetorno:true}, {dataCriacao:{$gte:date}}]}, function(err, docs) {  
                     console.log(JSON.stringify(docs), err);
                    
                     callback(docs);
