@@ -87,7 +87,7 @@ module.exports = {
     pesquisaPorCpf(callback, cpf){
 
         associadosDb.find({CPF:cpf+""}, function(err, docs) {  
-            console.log(JSON.stringify(docs), err);
+            console.log(cpf+JSON.stringify(docs), err);
            
             callback(docs);
         });

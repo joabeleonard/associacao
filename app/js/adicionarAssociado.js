@@ -43,22 +43,29 @@ let retornos = {};
 var tableRetorno;
 
 
-inputCPF.addEventListener('keypress',function(){
+inputCPF.addEventListener('change',function(){
 
-    let rest = {};
+    let rest;
     function handleResult(docs){
         rest = jQuery.parseJSON(JSON.stringify(docs));
+        console.log(rest);
+        if(rest.length > 0){
+
+            botaoSalvar.setAttribute('disabled', true);
+
+            window.$.dreamAlert({
+                'type'      :   'error',
+                'message'   :   'CPF já cadastrado!'
+            });
+        }
     }
 
     data.pesquisaPorCpf(handleResult, inputCPF.value);
 
-    if(rest === null){
-        botaoSalvar.setAttribute('disabled', false);
-    }else{
-
-    }
+   
 
     });
+
 
 let row;
 
