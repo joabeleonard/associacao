@@ -1,4 +1,6 @@
 var fs = require('fs');
+const {dialog} = require("electron").remote;
+
 
 let menuGerarArquivoVariacao = document.querySelector('#menuGerarArquivoVariacao');
 
@@ -13,12 +15,24 @@ menuGerarArquivoVariacao.addEventListener('click', function () {
         rest = jQuery.parseJSON(JSON.stringify(docs));
 
         let line ='';
+        console.log(rest);
         rest.forEach(element => {
             console.log(element);
-            line = line.concat('006312ASSOF               000000000000000000000000000000000000000000000DANILOBARBOSADASILVA'+element.CPF
-            +element.codOrgao+element.matricula+'I60000000000000000000000000000000\n');
+            let tamanhoNome = element.nome;
+            let tipoAlteracao = 'I';
+            if(element.flg_associado ==='false'){
+                tipoAlteracao = 'E';
+            }
+
+            let nome = String("00000000000000000000000000000000000000000000000000000000000000000").concat(element.nome);
+            console.log(nome);
+            line = line.concat('006312ASSOF               '+nome.substr(nome.length-65,65)+element.CPF
+            +element.codOrgao+element.matricula+tipoAlteracao+'60000000000000000000000000000000\n');
         });
-        fs.writeFile(month+"-"+year+'-arquivoVariacao.txt', line, function (err) {
+
+        var savePath = dialog.showSaveDialog({defaultPath: month+"-"+year+'-arquivoVariacao.txt'});
+
+        fs.writeFile(savePath, line, function (err) {
             if (err) {
                 window.$.dreamAlert({
                     'type'      :   'error',

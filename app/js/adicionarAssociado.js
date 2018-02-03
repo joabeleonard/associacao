@@ -93,6 +93,7 @@ botaoSalvar.addEventListener('click', function () {
     associado.turma = turma;
     associado.dataNascimento = dataNascimento;
     associado.matricula = matricula;
+
     associado.flg_associado = flagAssociado;
     associado.telefone = telefone;
 
@@ -104,6 +105,7 @@ botaoSalvar.addEventListener('click', function () {
         associado.codOrgao = 381;
     }
 
+    
     if(hiddenId != null && hiddenId != undefined && hiddenId != ""){
          associado._id = hiddenId;
          associado.dataUltimaEdicao = new Date();
@@ -113,7 +115,6 @@ botaoSalvar.addEventListener('click', function () {
             editRow(row, resposta);
         }
     }else{
-        associado.enviarNoProximoArquivoRetorno = true;
         associado.dataCriacao = new Date();
          data.salvaAssociado(associado);
          addRow(associado);
@@ -129,6 +130,8 @@ botaoSalvar.addEventListener('click', function () {
 });
 
 
+
+
 function preencherObjeto(associado, updateRow){
     row = updateRow;
     inputName.value = associado.nome;
@@ -140,12 +143,29 @@ function preencherObjeto(associado, updateRow){
 
     inputTurma.value= associado.turma;
     inputDataNascimento.value= associado.dataNascimento;
-    hiddenId.value = associado._id;
-    inputMatricula.value = associado.matricula;
+    
+    if(associado._id === undefined || associado._id ===''){
+        function handleResult(docs){
+            rest = jQuery.parseJSON(JSON.stringify(docs));
+            hiddenId.value = rest[0]._id;      
+            inputMatricula.value =rest[0].matricula;
 
-    inputAssociado.value = associado.flg_associado;
+            inputAssociado.value = rest[0].flg_associado;
+    
+            inputTelefone.value = rest[0].telefone;      
+        }
+    
+        data.pesquisaPorCpf(handleResult, associado.CPF);
 
-    inputTelefone.value = associado.telefone;
+    }else{
+        hiddenId.value = associado._id;
+        inputMatricula.value = associado.matricula;
+
+        inputAssociado.value = associado.flg_associado;
+
+        inputTelefone.value = associado.telefone;
+    }
+    
 
 }
 
@@ -166,7 +186,7 @@ function preencherObjetoDetalhar(associado, updateRow){
      function handleResult(docs){
             
          retornos = jQuery.parseJSON(JSON.stringify(docs));
-         console.log("Retorno dfs"+retornos[0]._id);
+         console.log("Retorno dfs"+ [0]._id);
 
          tableRetorno = window.$('#dataTableRetorno').DataTable( {
                  
