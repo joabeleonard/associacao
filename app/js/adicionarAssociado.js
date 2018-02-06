@@ -39,7 +39,6 @@ let inputAssociadoDetalhar = document.querySelector('#inputAssociadoDetalhar');
 
 let inputTelefone = document.querySelector('#exampleInputTelefone');
 
-let retornos = {};
 var tableRetorno;
 
 
@@ -170,26 +169,27 @@ function preencherObjeto(associado, updateRow){
 }
 
 function preencherObjetoDetalhar(associado, updateRow){
-    row = updateRow;
-    inputNameDetalhar.value = associado.nome;
-    inputNomeDeGuerraDetalhar.value =  associado.nomeDeGuerra;
-    inputEmailDetalhar.value = associado.email;
-    inputOrgaoDetalhar.value= associado.nomeOrgao;
    
-    inputDataNascimentoDetalhe.value = associado.dataNascimento;    
- 
-    inputmatriculaDetalhar.value = associado.matricula;
-
-    inputAssociadoDetalhar.value = associado.flg_associado;
-
-
      function handleResult(docs){
             
+        row = updateRow;
+        inputNameDetalhar.value = associado.nome;
+        inputNomeDeGuerraDetalhar.value =  associado.nomeDeGuerra;
+        inputEmailDetalhar.value = associado.email;
+        inputOrgaoDetalhar.value= associado.nomeOrgao;
+       
+        inputDataNascimentoDetalhe.value = associado.dataNascimento;    
+     
+        inputmatriculaDetalhar.value = associado.matricula;
+    
+        inputAssociadoDetalhar.value = associado.flg_associado;
+    
+        let retornos = {};
          retornos = jQuery.parseJSON(JSON.stringify(docs));
          console.log("Retorno dfs"+ [0]._id);
 
          tableRetorno = window.$('#dataTableRetorno').DataTable( {
-                 
+            destroy: true,
             data :  retornos, 
             
             columns: [ 
