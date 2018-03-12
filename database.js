@@ -1,5 +1,10 @@
 var nedb = require('nedb');
-var associadosDb = new nedb({filename: __dirname + '/tempDB/associados.db', autoload: true});
+
+var electron = require('electron');
+const app = electron.remote.app;
+var userData = app.getAppPath('userData');
+
+var associadosDb = new nedb({filename: userData + '/tempDB/associados.db', autoload: true});
 const jsonfile = require('jsonfile-promised');
 
  function findAllCallback(callback){
@@ -10,8 +15,8 @@ const jsonfile = require('jsonfile-promised');
                 });    
 
             }
+         
 
-            
  function findByIdCallback(id, callback){
                 associadosDb.findOne({ _id: id }, function(err, docs) {  
                     console.log(JSON.stringify(docs), err);

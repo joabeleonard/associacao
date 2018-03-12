@@ -61,9 +61,7 @@ function openFile () {
                     }
 
                     data.pesquisaPorMatriculaOrgao(handleResult, matricula, orgao);
-                }
-
-               
+                }    
 
                   window.$.dreamAlert({
                       'type'      :   'success',

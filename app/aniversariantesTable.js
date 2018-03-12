@@ -23,13 +23,20 @@ let rest = {};
 
             var currentDate = new Date();
             var day = currentDate.getUTCDate();
-             var month = currentDate.getMonth()+1;
+            var month = currentDate.getMonth()+1;
+            var year = currentDate.getFullYear();
+
 
              let aniversariantes = [];
              rest.forEach(element => {
-             
-              if(new Date(element.dataNascimento).getUTCDate() === day 
-                && new Date(element.dataNascimento).getMonth()+1 === month){
+
+             var dataAniversario = new Date(element.dataNascimento); 
+             dataAniversario.setFullYear(year);
+             alert("dataAniversario"+dataAniversario);
+             var dataAniversarioMaisCinco = new Date(element.dataNascimento).setDate(dataAniversario.getDate() +5);
+             alert("dataAniversarioMaisCinco"+dataAniversarioMaisCinco);
+              if(currentDate <= dataAniversario
+                && currentDate > dataAniversarioMaisCinco){
                     aniversariantes.push(element);
                  
               }

@@ -5,3 +5,4 @@ Não permitir duplicação do associado.(CPF)
 Alterar posição do campo CPF para verificar duplicações.
 Tirar link Remover.
 Inverter POsto e turma
+electron-packager . --platform=win32 --arch=x64	

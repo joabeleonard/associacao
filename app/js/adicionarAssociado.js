@@ -5,42 +5,51 @@ const dataRetorno = require('../databaseRetorno');
 
 
 
+let botaoEscolherMotivoDesligamento = document.querySelector('#btnEscolherMotivoDesligamento');
+
+
 
 let botaoSalvar = document.querySelector('#btnSalvarAssosiado');
 
 let inputName = document.querySelector('#exampleInputName');
-let inputNameDetalhar = document.querySelector('#exampleInputNameDetalhar');
 
 let inputNomeDeGuerra = document.querySelector('#inputNomeDeGuerra');
 let inputNomeDeGuerraDetalhar = document.querySelector('#inputNomeDeGuerraDetalhar');
 
 let inputEmail = document.querySelector('#exampleInputEmail1');
-let inputEmailDetalhar = document.querySelector('#inputEmailDetalhar');
 
 let inputCPF = document.querySelector('#exampleInputCPF');
 let inputPosto = document.querySelector('#inputPosto');
 
 let inputOrgao = document.querySelector('#exampleInputOrgao');
-let inputOrgaoDetalhar = document.querySelector('#inputOrgaoDetalhar');
 
 let inputTurma = document.querySelector('#exampleInputTurma');
 let inputDataNascimento = document.querySelector('#exampleInputDataNascimento');
-let inputDataNascimentoDetalhe = document.querySelector('#exampleInputDataNascimentoDetalhar');
 
 
 let inputHiddenId = document.querySelector('#hiddenId');
 
 let inputMatricula = document.querySelector('#exampleInputMatricula');
-let inputmatriculaDetalhar = document.querySelector('#inputmatriculaDetalhar');
 
 let inputAssociado = document.querySelector('#inputAssociado');
-let inputAssociadoDetalhar = document.querySelector('#inputAssociadoDetalhar');
 
 
 let inputTelefone = document.querySelector('#exampleInputTelefone');
 
+let inputMotivoDesligamento = document.querySelector('#inputMotivoDesligamento');
+
 var tableRetorno;
 
+inputAssociado.addEventListener('change' , function(){
+
+    if(inputAssociado.value == 'false'){
+        window.$("#modalMotivoDesligamento").modal("show");
+
+    }else{
+        inputMotivoDesligamento.value = '';
+    }
+    
+});
 
 inputCPF.addEventListener('change',function(){
 
@@ -59,12 +68,14 @@ inputCPF.addEventListener('change',function(){
         }
     }
 
-    data.pesquisaPorCpf(handleResult, inputCPF.value);
-
-   
+    data.pesquisaPorCpf(handleResult, inputCPF.value);  
 
     });
 
+
+ botaoEscolherMotivoDesligamento.addEventListener('click',function(){
+    window.$("#modalMotivoDesligamento").modal("hide");
+ });
 
 let row;
 
@@ -81,10 +92,11 @@ botaoSalvar.addEventListener('click', function () {
     let matricula = inputMatricula.value;
     let flagAssociado = inputAssociado.value;
     let telefone = inputTelefone.value;
+    let motivoDesligamento = inputMotivoDesligamento.value;
 
     let associado = new Object();
-    associado.nome = nome;
-    associado.nomeDeGuerra = nomeDeGuerra;
+    associado.nome = nome.toUpperCase();
+    associado.nomeDeGuerra = nomeDeGuerra.toUpperCase();
     associado.email = email;
     associado.CPF = CPF;
     associado.posto = posto;
@@ -92,6 +104,7 @@ botaoSalvar.addEventListener('click', function () {
     associado.turma = turma;
     associado.dataNascimento = dataNascimento;
     associado.matricula = matricula;
+    associado.motivoDesligamento =  motivoDesligamento;
 
     associado.flg_associado = flagAssociado;
     associado.telefone = telefone;
@@ -173,16 +186,8 @@ function preencherObjetoDetalhar(associado, updateRow){
      function handleResult(docs){
             
         row = updateRow;
-        inputNameDetalhar.value = associado.nome;
         inputNomeDeGuerraDetalhar.value =  associado.nomeDeGuerra;
-        inputEmailDetalhar.value = associado.email;
-        inputOrgaoDetalhar.value= associado.nomeOrgao;
-       
-        inputDataNascimentoDetalhe.value = associado.dataNascimento;    
-     
-        inputmatriculaDetalhar.value = associado.matricula;
-    
-        inputAssociadoDetalhar.value = associado.flg_associado;
+        
     
         let retornos = {};
          retornos = jQuery.parseJSON(JSON.stringify(docs));

@@ -27,20 +27,20 @@ let rest = {};
   
            
              oTable = window.$('#dataTable').DataTable( {
-                 
-        data :  rest, 
-     
+                        
+                data :  rest, 
+            
 
-        columns: [ 
-            { data: "nome" },
-            { data: 'nomeDeGuerra' },
-            { data: 'CPF' } ,
-            { data: 'posto' } ,
-            { data: 'nomeOrgao' },
-            { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Editar</a>'; } },
-            { "data": "idDetalhar", render: function (dataField) { return '<a class="detalhar" href="">Detalhar</a>'; } }
-       ]
-    } );
+                columns: [ 
+                    { data: "nome" },
+                    { data: 'nomeDeGuerra' },
+                    { data: 'CPF' } ,
+                    { data: 'posto' } ,
+                    { data: 'nomeOrgao' },
+                    { "data": "idEdit", render: function (dataField) { return '<a class="edit" href="">Editar</a>'; } },
+                    { "data": "idDetalhar", render: function (dataField) { return '<a class="detalhar" href="">Detalhar</a>'; } }
+                ]
+            } );
 
 
     var nEditing = null;
