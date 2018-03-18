@@ -22,21 +22,20 @@ let rest = {};
             rest = jQuery.parseJSON(JSON.stringify(docs));
 
             var currentDate = new Date();
-            var day = currentDate.getUTCDate();
-            var month = currentDate.getMonth()+1;
             var year = currentDate.getFullYear();
-
 
              let aniversariantes = [];
              rest.forEach(element => {
 
              var dataAniversario = new Date(element.dataNascimento); 
              dataAniversario.setFullYear(year);
-             alert("dataAniversario"+dataAniversario);
-             var dataAniversarioMaisCinco = new Date(element.dataNascimento).setDate(dataAniversario.getDate() +5);
-             alert("dataAniversarioMaisCinco"+dataAniversarioMaisCinco);
-              if(currentDate <= dataAniversario
-                && currentDate > dataAniversarioMaisCinco){
+
+            
+             var timeDiff = Math.abs(currentDate.getTime() - dataAniversario.getTime());
+             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+      
+              if(diffDays <= 7
+                && diffDays >= 0 && dataAniversario>=currentDate){
                     aniversariantes.push(element);
                  
               }
