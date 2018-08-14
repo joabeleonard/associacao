@@ -1,0 +1,23 @@
+{
+  "name": "assof",
+  "productName": "ASSOF",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=x64  --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.7.9",
+    "electron-windows-notifications": "^1.1.16",
+    "jsonfile-promised": "0.0.1",
+    "moment": "^2.21.0",
+    "nedb": "^1.8.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}

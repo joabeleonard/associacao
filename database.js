@@ -83,8 +83,6 @@ module.exports = {
         var month = currentDate.getMonth()+1;
                 
                 associadosDb.find({$or:[{
-                    flg_associado:'false'
-                },{
                     dataUltimaEdicao:{$gte:date}
                 }, {
                     dataCriacao:{$gte:date}

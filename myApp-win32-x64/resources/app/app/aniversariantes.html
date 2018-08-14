@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Associação dos Oficiais da Policia Militar e do do Corpo de Bombeiros Militar do Estado do Ceará</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+ <style>
+.modal.modal-wide .modal-dialog .modal-content{
+  width: 700px;
+}
+
+
+</style>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right"  align="center">
+         <img src="img/logo.png">
+       </li>
+       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Associados">
+         <a class="nav-link" href="index.html">
+           <i class="fa fa-fw fa-table"></i>
+           <span class="nav-link-text">Associados</span>
+         </a>
+       </li>
+      
+       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+           <i class="fa fa-fw fa-file"></i>
+           <span class="nav-link-text">Arquivos</span>
+         </a>
+         <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+           <li>
+             <a id="menuGerarArquivoVariacao" href="#">Gerar Arquivo de Variação</a>
+           </li>
+           <li>
+             <a href="uploadArquivoRetorno.html">Enviar Arquivo de Retorno</a>
+           </li>
+          
+         </ul>
+       </li>
+
+       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Aniversariantes">
+           <a class="nav-link" href="aniversariantes.html">
+             <i class="fa fa-fw fa-table"></i>
+             <span class="nav-link-text">Aniversariantes</span>
+           </a>
+         </li>
+      
+     
+     </ul>
+   </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Associação dos Oficiais da Policia Militar e do do Corpo de Bombeiros Militar do Estado do Ceará</li>
+      </ol>
+  
+      
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Associados Aniversariante</div>
+        <div class="card-body">
+          <div class="table-responsive">
+             
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                
+                  <th>Nome</th>
+                  <th>Nome de Guerra</th>
+                  <th>CPF</th>
+                  <th>Posto</th>
+                  <th>Orgão</th>
+                  <th>Data de Nascimento</th>
+                  <th>E-mail</th>
+                  <th>Delete</th>
+              </thead>
+            
+              <tbody>
+                 <th>nome</th>
+                  <th>nomeDeGuerra</th>
+                  <th>CPF</th>
+                  <th>posto</th>
+                  <th>nomeOrgao</th>
+                  <th>dataNascimento</th>
+                  <th>email</th>
+                  <th>Delete</th>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>ASSOF © 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="./vendor/jquery/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script src="js/abrir_modal.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+     <script src="vendor/datatables/dataTables.buttons.min.js"></script>
+      <script src="vendor/datatables/dataTables.select.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <script type="text/javascript" src="aniversariantesTable.js">
+ 
+    
+ 
+   </script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+   
+    
+  </div>
+</body>
+
+</html>

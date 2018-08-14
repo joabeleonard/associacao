@@ -25,9 +25,12 @@ menuGerarArquivoVariacao.addEventListener('click', function () {
             }
 
             let nome = String("00000000000000000000000000000000000000000000000000000000000000000").concat(element.nome);
+           
             console.log(nome);
-            line = line.concat('006312ASSOF               '+nome.substr(nome.length-65,65)+element.CPF
-            +element.codOrgao+element.matricula+tipoAlteracao+'60000000000000000000000000000000\n');
+            line = line.concat('006312ASSOF               '+nome.substr(nome.length-65,65)+element.CPF.replace('.', '').replace('.', '').replace('-','').replace(' ','')
+            +element.codOrgao+element.matricula+tipoAlteracao+'60000000000000000000000000000000\r\n');
+
+            
         });
 
         var savePath = dialog.showSaveDialog({defaultPath: month+"-"+year+'-arquivoVariacao.txt'});

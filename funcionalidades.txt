@@ -6,3 +6,4 @@ Alterar posição do campo CPF para verificar duplicações.
 Tirar link Remover.
 Inverter POsto e turma
 electron-packager . --platform=win32 --arch=x64	
+electron-packager . myApp --platform=win32 --arch=x64
